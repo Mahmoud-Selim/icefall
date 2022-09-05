@@ -1,0 +1,14 @@
+nohup: ignoring input
+2022-08-21 20:52:06 (stage7.sh:19:main) Stage 7: Prepare bigram P
+/tmp/pip-install-20n3g_jl/kaldilm/kaldilm/csrc/arpa_file_parser.cc:void kaldilm::ArpaFileParser::Read(std::istream&):79
+[I] Reading \data\ section.
+/tmp/pip-install-20n3g_jl/kaldilm/kaldilm/csrc/arpa_file_parser.cc:void kaldilm::ArpaFileParser::Read(std::istream&):140
+[I] Reading \1-grams: section.
+/tmp/pip-install-20n3g_jl/kaldilm/kaldilm/csrc/arpa_file_parser.cc:void kaldilm::ArpaFileParser::Read(std::istream&):140
+[I] Reading \2-grams: section.
+/tmp/pip-install-20n3g_jl/kaldilm/kaldilm/csrc/arpa_file_parser.cc:void kaldilm::ArpaFileParser::Read(std::istream&):79
+[I] Reading \data\ section.
+/tmp/pip-install-20n3g_jl/kaldilm/kaldilm/csrc/arpa_file_parser.cc:void kaldilm::ArpaFileParser::Read(std::istream&):140
+[I] Reading \1-grams: section.
+/tmp/pip-install-20n3g_jl/kaldilm/kaldilm/csrc/arpa_file_parser.cc:void kaldilm::ArpaFileParser::Read(std::istream&):140
+[I] Reading \2-grams: section.
