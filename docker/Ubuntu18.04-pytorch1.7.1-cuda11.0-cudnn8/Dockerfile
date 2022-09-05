@@ -80,11 +80,17 @@ RUN git clone https://github.com/k2-fsa/k2.git /opt/k2 && \
 
 # install  lhotse
 RUN pip install torchaudio==0.7.2
-RUN pip install git+https://github.com/lhotse-speech/lhotse
+RUN pip install git+https://github.com/lhotse-speech/lhotse@v1.0
 #RUN pip install lhotse
 
-# install icefall
-RUN git clone https://github.com/k2-fsa/icefall && \
+# install icefall (old installation)
+#RUN git clone https://github.com/k2-fsa/icefall && \
+#    cd icefall && \
+#    pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
+
+# install icefall (New Installation)
+RUN mkdir -p $HOME/Workspace/ASR_Datasets
+RUN git clone git@github.com:Mahmoud-Selim/icefall.git $HOME/Workspace && \
     cd icefall && \
     pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
     
