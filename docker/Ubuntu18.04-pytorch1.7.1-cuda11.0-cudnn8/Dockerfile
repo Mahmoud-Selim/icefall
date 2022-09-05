@@ -94,5 +94,5 @@ RUN git clone git@github.com:Mahmoud-Selim/icefall.git $HOME/Workspace && \
     cd icefall && \
     pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
     
-ENV PYTHONPATH /workspace/icefall:$PYTHONPATH  
+ENV PYTHONPATH $HOME/Workspace/icefall:$PYTHONPATH  
 
