@@ -11,4 +11,4 @@ custom_repo=$ws/icefall_ws/icefall_custom/icefall/egs/librispeech/custom_asr
 exp_dir=$ws/icefall_ctc_exp_1000/
 
 cd $custom_repo
-python conformer_ctc/custom_train.py --start-epoch 14 --num-epochs 22 --max-duration 50 --world-size=4 --lang-dir=data/lang_bpe_5000 --exp-dir=$exp_dir
+python conformer_ctc/custom_train.py --start-epoch 21 --num-epochs 29 --max-duration 50 --world-size=4 --lang-dir=data/lang_bpe_5000 --exp-dir=$exp_dir
