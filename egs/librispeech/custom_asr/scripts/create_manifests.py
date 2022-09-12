@@ -23,5 +23,5 @@ if __name__ == "__main__":
     parser.add_argument('--kaldi-dir', help='path data dir (kaldi style)')
     parser.add_argument('--output-dir', help='Directory of output manifests')
     args = parser.parse_args()
-    manifest = Manifest(args.kaldi_dir, 16000)
+    manifest = Manifest(args.kaldi_dir, 8000)
     manifest.export(args.output_dir)

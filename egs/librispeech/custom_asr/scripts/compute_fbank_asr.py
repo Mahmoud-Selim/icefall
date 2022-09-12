@@ -54,7 +54,7 @@ def compute_fbank_librispeech():
     manifests = read_manifests_if_cached(dataset_parts=dataset_parts, output_dir=src_dir, suffix="jsonl")
     assert manifests is not None
 
-    extractor = Fbank(FbankConfig(num_mel_bins=num_mel_bins))
+    extractor = Fbank(FbankConfig(num_mel_bins=num_mel_bins, sampling_rate=8000))
 
     with get_executor() as ex:  # Initialize the executor only once.
         for partition, m in manifests.items():

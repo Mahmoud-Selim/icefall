@@ -34,7 +34,7 @@ class Cleaner():
 
 
         old_scp_fh = open(self.scp_file)
-        new_scp_fh = open(os.path.join(self.output_dir, "new_wav.scp"), "w")
+        new_scp_fh = open(os.path.join(self.output_dir, "wav.scp"), "w")
         for line in old_scp_fh:
             wav_id, wav_path = line.strip().split()
             if(wav_id not in long_text_id and wav_id not in invalid_letters_id):
