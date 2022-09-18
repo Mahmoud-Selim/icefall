@@ -222,7 +222,7 @@ def get_params() -> AttributeDict:
             "attention_dim": 512,
             "num_decoder_layers": 6,
             # parameters for decoding
-            "search_beam": 4,
+            "search_beam": 8,
             "output_beam": 4,
             "min_active_states": 30,
             "max_active_states": 8000,
