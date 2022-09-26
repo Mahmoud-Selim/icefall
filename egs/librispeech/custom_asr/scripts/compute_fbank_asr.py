@@ -49,6 +49,8 @@ def compute_fbank_librispeech():
 
     dataset_parts = (
         "train",
+        "test",
+        "val"
     )
 
     manifests = read_manifests_if_cached(dataset_parts=dataset_parts, output_dir=src_dir, suffix="jsonl")

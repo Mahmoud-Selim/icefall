@@ -20,7 +20,7 @@ class SegmentsMaker():
             wav_id, wav_path = line.strip().split()
             start, end = 0, sox.file_info.duration(wav_path)
 
-            segments_fh.write(wav_id + " " + wav_id + " " + str(start) + " " + str(end) + "\n")
+            segments_fh.write(wav_id + " " + str(start) + " " + str(end) + "\n")
 
         segments_fh.close()
 
