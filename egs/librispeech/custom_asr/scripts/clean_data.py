@@ -22,7 +22,7 @@ class Cleaner():
         segments = {}
         segs_fh = open(self.segs_file, "r")
         for line in segs_fh:
-            wav_id, _, end = line.split()
+            wav_id, _, __, end = line.split()
             segments[wav_id] = int(float(end) + 0.5)
 
         text_fh = open(self.text_file, "r")

@@ -30,7 +30,7 @@ from pathlib import Path
 import torch
 from lhotse import ChunkedLilcomHdf5Writer, CutSet, Fbank, FbankConfig
 from lhotse.recipes.utils import read_manifests_if_cached
-
+import argparse
 from icefall.utils import get_executor
 
 # Torch's multithreaded behavior needs to be disabled or
@@ -41,7 +41,7 @@ torch.set_num_threads(1)
 torch.set_num_interop_threads(1)
 
 
-def compute_fbank_librispeech():
+def compute_fbank_librispeech(args):
     src_dir = Path("data/colloquial_arabic")
     output_dir = Path("data/fbank")
     num_jobs = min(15, os.cpu_count())
@@ -53,7 +53,7 @@ def compute_fbank_librispeech():
         "val"
     )
 
-    manifests = read_manifests_if_cached(dataset_parts=dataset_parts, output_dir=src_dir, suffix="jsonl")
+    manifests = read_manifests_if_cached(dataset_parts=dataset_parts, prefix = args.dataset_name, output_dir=src_dir, suffix="jsonl")
     assert manifests is not None
 
     extractor = Fbank(FbankConfig(num_mel_bins=num_mel_bins, sampling_rate=8000))
@@ -91,6 +91,8 @@ if __name__ == "__main__":
     )
 
     logging.basicConfig(format=formatter, level=logging.INFO)
-
-    compute_fbank_librispeech()
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--dataset-name', help='Name of the dataset')
+    args = parser.parse_args()
+    compute_fbank_librispeech(args)
     print("FBank features extracted successfully...")

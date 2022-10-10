@@ -520,9 +520,9 @@ def decode_dataset(
         num_batches = "?"
 
     results = defaultdict(list)
+    output_fh = open("output_transcripts", "w")
     for batch_idx, batch in enumerate(dl):
-        if(batch_idx > 2000):
-            break
+        
         texts = batch["supervisions"]["text"]
         cut_ids = [cut.id for cut in batch["supervisions"]["cut"]]
 
@@ -539,6 +539,8 @@ def decode_dataset(
             sos_id=sos_id,
             eos_id=eos_id,
         )
+        for i in range(len(cut_ids)):
+            output_fh.write(cut_ids[i] + " " + " ".join(hyps_dict["ctc-decoding"][i]) + "\n")
 
         if hyps_dict is not None:
             for lm_scale, hyps in hyps_dict.items():
@@ -570,6 +572,8 @@ def decode_dataset(
             logging.info(
                 f"batch {batch_str}, cuts processed until now is {num_cuts}"
             )
+
+    output_fh.close()
     return results
 
 

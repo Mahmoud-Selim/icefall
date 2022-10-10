@@ -14,8 +14,8 @@ class Manifest():
         self.dataset_type = args.dataset_type
 
     def export(self, out_dir):
-        self.recording_set.to_file(os.path.join(out_dir, "recordings_" + self.dataset_name + "_" + self.dataset_type + ".jsonl"))
-        self.supervision_set.to_file(os.path.join(out_dir, "supervisions_"+ self.dataset_name + "_" + self.dataset_type + ".jsonl"))
+        self.recording_set.to_file(os.path.join(out_dir, self.dataset_name + "_recordings_" + self.dataset_type + ".jsonl"))
+        self.supervision_set.to_file(os.path.join(out_dir, self.dataset_name + "_supervisions_"+ self.dataset_type + ".jsonl"))
     
 
 if __name__ == "__main__":
