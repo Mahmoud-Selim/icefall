@@ -34,7 +34,7 @@ class Cleaner():
             line = line.strip().replace("<overlap>", "n")
             line = line.strip().replace("<laugh>", "o")
             line = line.strip().replace("<noise>", "p")
-            if(len(line.split()) >= 3 * segments[line.split()[0]]):
+            if(line.split()[0] in segments and len(line.split()) >= 3 * segments[line.split()[0]]):
                 long_text_id.append(line.split()[0])
                 long_text_trans.append(line[line.find(" ") + 1: ])
             for letter in line[line.find(" ")+1:]:
@@ -57,7 +57,7 @@ class Cleaner():
 
         df = pd.concat((pd.DataFrame({"Long Text ID": long_text_id}),
                              pd.DataFrame({"Invalid Letters ID": invalid_letters_id})))
-        df = pd.concat((df, pd.DataFrame({"Trans": long_text_trans + invalid_letters_trans})), axis=1)
+        #df = pd.concat((df, pd.DataFrame({"Trans": long_text_trans + invalid_letters_trans})), axis=1)
                              
         df.to_csv(os.path.join(self.output_dir, "cleaned.csv"), index = False)
 if __name__ == "__main__":
@@ -70,4 +70,5 @@ if __name__ == "__main__":
     args = parser.parse_args()
     SM = Cleaner(args)
     SM.clean_data()
+
 
