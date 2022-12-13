@@ -80,6 +80,6 @@ RUN git clone https://github.com/Mahmoud-Selim/icefall /opt/icefall && \
 RUN mkdir -p /opt/multiRefWER
 RUN git clone https://github.com/Mahmoud-Selim/multiRefWER /opt/multiRefWER
     
-ENV PYTHONPATH /workspace/icefall:$PYTHONPATH  
+ENV PYTHONPATH /opt/icefall:$PYTHONPATH  
 
 #WORKDIR /workspace/icefall

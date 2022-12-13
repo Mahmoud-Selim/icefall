@@ -1,7 +1,6 @@
 FROM pytorch/pytorch:1.7.1-cuda11.0-cudnn8-devel
 
 # install normal source
-
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
         g++ \
@@ -89,10 +88,12 @@ RUN pip install git+https://github.com/lhotse-speech/lhotse@v1.0
 #    pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 # install icefall (New Installation)
-RUN mkdir -p $HOME/Workspace/ASR_Datasets
-RUN git clone git@github.com:Mahmoud-Selim/icefall.git $HOME/Workspace && \
-    cd icefall && \
-    pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
+RUN mkdir -p /opt/icefall
+RUN git clone https://github.com/Mahmoud-Selim/icefall /opt/icefall && \
+    cd /opt/icefall && \
+    python -m pip install -r requirements.txt
     
-ENV PYTHONPATH $HOME/Workspace/icefall:$PYTHONPATH  
-
+RUN mkdir -p /opt/multiRefWER
+RUN git clone https://github.com/Mahmoud-Selim/multiRefWER /opt/multiRefWER
+    
+ENV PYTHONPATH /workspace/icefall:$PYTHONPATH  
