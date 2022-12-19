@@ -18,6 +18,8 @@ class Cleaner():
         invalid_letters_id = []
         invalid_letters_trans = []
         long_text_id = []
+        not_annotated_id = []
+        annotated_id = []
         long_text_trans = []
         segments = {}
         segs_fh = open(self.segs_file, "r")
@@ -34,6 +36,7 @@ class Cleaner():
             line = line.strip().replace("<overlap>", "n")
             line = line.strip().replace("<laugh>", "o")
             line = line.strip().replace("<noise>", "p")
+            annotated_id.append(line.split()[0])
             if(line.split()[0] in segments and len(line.split()) >= 3 * segments[line.split()[0]]):
                 long_text_id.append(line.split()[0])
                 long_text_trans.append(line[line.find(" ") + 1: ])
@@ -48,7 +51,7 @@ class Cleaner():
         new_scp_fh = open(os.path.join(self.output_dir, "wav.scp"), "w")
         for line in old_scp_fh:
             wav_id, wav_path = line.strip().split()
-            if(wav_id not in long_text_id and wav_id not in invalid_letters_id):
+            if(wav_id not in long_text_id and wav_id not in invalid_letters_id and wav_id in annotated_id):
                 new_scp_fh.write(line)
 
         new_scp_fh.close()
